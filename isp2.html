@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+</head>
+
+<body style="background-color: transparent;">
+
+    <div class="loc_btm">
+        <div class="loc_info">
+            <ul>
+                <li>ISP</li>
+                <li>Continent</li>
+                <li>Country Code</li>
+                <li>Country</li>
+                <li>Region</li>
+
+            </ul>
+        </div>
+
+        <div class="loc_data">
+            <ul>
+                <li id="isp">ISP </li>
+
+                <li id="city">Continent</li>
+
+                <li id="country_code">Country Code3</li>
+
+                <li id="country">Country2</li>
+
+                <li id="region">Region1</li>
+
+            </ul>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript">
+        $.get('https://api.ipdata.co/?api-key=test', function (response) {
+
+
+            $("#isp").html(response.asn.name);
+            $("#city").html(response.city);
+            $("#country").html(response.country_name);
+            $("#region").html(response.region);
+            $("#country_code").html(response.country_code);
+
+        }, 'jsonp');
+    </script>
+
+</body>
+
+</html>

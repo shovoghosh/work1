@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+</head>
+
+<body style="background-color: transparent;">
+
+    <div class="iploc">
+
+        <p id="ip">64.190.114.23</p>
+    </div>
+
+    <div class="flag_info">
+
+        <img height="50" width="90" id="myUrl" src="" />
+
+        <h3 id="country2">country</h3>
+
+    </div>
+
+    <script>
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "https://api.ipdata.co/?api-key=test",
+            "method": "GET"
+        }
+
+        $.ajax(settings).done(function (response) {
+            $(document).ready(function () {
+                console.log(response);
+                var content = response.flag;
+                $("#myUrl").attr('src', content);
+
+            });
+        });
+    </script>
+
+
+    <script>
+        function callback(response) {
+
+            console.log(response)
+
+            document.getElementById("ip").innerHTML = response.IPv4;
+            document.getElementById("country2").innerHTML = response.country_name;
+        }
+
+        $.ajax({
+
+            url: "https://geoip-db.com/jsonp/",
+            dataType: "jsonp"
+
+        })
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+</head>
+
+<body style="background-color: transparent;">
+
+
+    <div class="map_info">
+        <ul>
+            <li>
+                <img src="images/icons/loc/lat.png" height="50" width="50" alt="Latitude.png" />
+                <h4 id="latitude">Latitude</h4>
+                <p>Latitude</p>
+            </li>
+
+            <li>
+                <img src="images/icons/loc/lon.png" height="50" width="50" alt="Latitude.png" />
+                <h4 id="longitude">Longitude</h4>
+                <p>Longitude</p>
+            </li>
+
+            <li>
+                <img src="images/icons/loc/tzon.png" height="50" width="50" alt="Latitude.png" />
+                <h4 id="state">Timezone</h4>
+                <p>Time zone </p>
+            </li>
+        </ul>
+    </div>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript">
+        $.get('https://ipinfo.io', function (response) {
+
+            $("#timezone1").html(response.timezone);
+            // $("#Country").html(response.country);
+
+
+        }, 'jsonp');
+    </script>
+    <script>
+        function callback(response) {
+            console.log(response)
+
+            document.getElementById("latitude").innerHTML = response.latitude;
+            document.getElementById("longitude").innerHTML = response.longitude;
+            document.getElementById("state").innerHTML = response.state;
+        }
+
+        $.ajax({
+
+            url: "https://geoip-db.com/jsonp/",
+            dataType: "jsonp"
+
+        })
+    </script>
+
+</body>
+
+</html>
